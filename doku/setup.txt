@@ -1,0 +1,49 @@
+[setup composer]
+mkdir crmapp
+cd crmapp
+curl -sS https://getcomposer.org/installer | php
+
+
+[setup git]
+https://github.com/Seymi/crmapp
+
+echo "# crmapp" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/Seymi/crmapp.git
+git push -u origin master
+
+
+[setup testframework]
+php composer.phar require "codeception/codeception:*"
+set cept="./vendor/bin/codecept"
+%cept% bootstrap
+
+cept generate:cept acceptance SmokeTest
+
+make changes in SmokeTestCept
+$I = new AcceptanceTester($scenario);
+$I->wantTo('See that landing page is up');
+$I->amOnPage('/');
+$I->see('Our CRM');
+
+make changes in acceptance/acceptance.suit.yml
+class_name: AcceptanceTester
+modules:
+enabled:
+- PhpBrowser
+- WebHelper
+config:
+PhpBrowser:
+url: 'http://YOUR.APPLICATION.URL'
+
+
+cept buil
+cept run
+
+
+[faker - generate data]
+php composer.phar require "fzaninotto/faker:*"
+
+
