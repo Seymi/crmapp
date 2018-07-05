@@ -46,4 +46,39 @@ cept run
 [faker - generate data]
 php composer.phar require "fzaninotto/faker:*"
 
+===========================================================================================
+resolve error from codeception in QueryCustomerByPhoneNumberCept.php
+https://www.yiiframework.com/forum/index.php/topic/67348-codeception-error-class-not-found/
+===========================================================================================
 
+Instead use
+use Step\Acceptance\CRMOperatorSteps as OperatorTest;
+use Step\Acceptance\CRMUserSteps as UserTest;
+
+then change to
+$I = new OperatorTest($scenario);
+and
+$I = new UserTest($scenario);
+
+That worked for me. (based on Codeception documenation "Reusing Test Code") 
+
+===========================================================================================
+
+
+
+[.gitignore]
+runtime/
+vendor/
+.vagrant/
+.idea/
+tests/_output/
+web/assets/
+config/db.php
+config/test.php
+config/overrides/local.php
+sample_code/
+
+
+git add .
+git commit 'chapter_2_bevore_install_yii2'
+git pull origin master
