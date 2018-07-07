@@ -39,7 +39,7 @@ PhpBrowser:
 url: 'http://YOUR.APPLICATION.URL'
 
 
-cept buil
+cept built
 cept run
 
 
